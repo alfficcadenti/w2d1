@@ -2,11 +2,9 @@ var https = require('https');
 
 
 
-function getAndPrintHTML () {
+function getAndPrintHTML (Options) {
 
-
-
-  https.get(requestOptions, function (response) {
+  https.get(Options, function (response) {
 
   var chunks = "";
   // the callback is invoked when a `data` chunk is received
