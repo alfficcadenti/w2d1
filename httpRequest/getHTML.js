@@ -1,19 +1,18 @@
-var https = require('https');
-
 function getHTML (options, callback) {
+  var https = require('https');
 
-  https.get(options,callback, function () {
+  https.get(options, function (response) {
 
-    var html = "";
+    var chunks = "";
     // the callback is invoked when a `data` chunk is received
     response.on('data', function (data) {
-      html += data;
+      chunks += data;
     });
 
     // the callback is invoked when all of the data has been received
     // (the `end` of the stream)
-    response.on('end', function(callback) {
-      callback(html);
+    response.on('end', function() {
+      console.log(chunks);
       console.log('Response stream complete.');
     });
   });
@@ -29,4 +28,4 @@ var requestOptions = {
   path: '/http-examples/step4.html'
 };
 
-getHTML(requestOptions, printHTML);
+getHTML(requestOptions,printHTML)
