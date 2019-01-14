@@ -12,7 +12,7 @@ function getHTML (options, callback) {
     // the callback is invoked when all of the data has been received
     // (the `end` of the stream)
     response.on('end', function() {
-      console.log(chunks);
+      callback(chunks);
       console.log('Response stream complete.');
     });
   });
